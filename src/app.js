@@ -1,6 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import useRoutes from "./routes/routes";
+import { startDatabase } from "./database";
 
 const app = express();
 
@@ -14,5 +15,6 @@ app.get("/", (request, response) => {
 app.use("", useRoutes);
 
 export default app.listen(3333, () => {
+  startDatabase();
   console.log("Server running");
 });

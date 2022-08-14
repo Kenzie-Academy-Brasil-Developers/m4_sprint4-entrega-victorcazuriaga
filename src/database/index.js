@@ -5,7 +5,7 @@ const database = new Client(
   process.env.NODE_ENV === "test"
     ? {
         user: "postgres",
-        host: "localhost:5433",
+        host: "localhost",
         database: "test_products",
         password: "postgres",
         port: 5433,
@@ -15,12 +15,13 @@ const database = new Client(
         host: process.env.DB_HOST,
         database: process.env.DB,
         password: process.env.DB_PASSWORD,
-        port: process.env.DB_PORT,
+        port: 5431,
       }
 );
 
 export const startDatabase = async () => {
   await database.connect();
+  console.log("connect DBA");
 };
 
 export default database;
