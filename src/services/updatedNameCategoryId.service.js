@@ -9,7 +9,7 @@ const updatedNameCategoryIdService = async (id, data) => {
     WHERE id = $2
     RETURNING * 
           `,
-      [data.categories, id]
+      [data.name, id]
     );
     return updatedNameCategoryDb.rows;
   } catch (error) {

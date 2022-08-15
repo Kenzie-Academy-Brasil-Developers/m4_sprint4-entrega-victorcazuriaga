@@ -8,7 +8,6 @@ const createCategoriesService = async (data) => {
         `,
       [data.name]
     );
-    console.log(await createCategoriesDb.rows[0], "return function");
     return createCategoriesDb.rows[0];
   } catch (error) {
     throw new Error(error);
