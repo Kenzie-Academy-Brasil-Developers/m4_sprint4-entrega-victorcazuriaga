@@ -8,7 +8,6 @@ const listCategoriesService = async (data) => {
       
       `
       );
-      console.log(listCategories.rows);
       return listCategories.rows;
     }
     const listCategories = await database.query(

@@ -4,13 +4,12 @@ const relatedProductsWithCategoryIdService = async (id) => {
   try {
     const relatedProductsWithCategoryIdDb = await database.query(
       `
-  SELECT PR.name FROM categories CT
+  SELECT PR.name, CT.name AS "category" FROM categories CT
 JOIN products PR ON CT.id = PR.category_id
 WHERE CT.id = $1;
 `,
       [id]
     );
-    console.log(relatedProductsWithCategoryIdDb.rows);
     return relatedProductsWithCategoryIdDb.rows;
   } catch (error) {
     throw new Error(error);

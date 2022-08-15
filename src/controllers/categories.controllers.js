@@ -18,7 +18,6 @@ const createCategoriesController = async (request, response) => {
 const listCategoriesController = async (request, response) => {
   try {
     const listCategories = await listCategoriesService();
-    console.log([listCategories]);
     return response.status(200).json(listCategories);
   } catch (error) {
     return response.status(400).json({ message: error.message });
@@ -54,7 +53,6 @@ const updatedNameCategoryIdController = async (request, response) => {
 const deletedCategoryForIdController = async (request, response) => {
   try {
     const id = request.params.id;
-    console.log(id);
     const deletedCategoryForId = await deletedCategoryForIdService(id);
     return response.status(204).send();
   } catch (error) {

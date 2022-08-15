@@ -30,7 +30,6 @@ const listAllProductsController = async (request, response) => {
 const listProductByIdController = async (request, response) => {
   try {
     const id = request.params.id;
-    console.log(id);
     const [listAllProducts] = await listProductByIdService(id);
     return response.status(200).json(listAllProducts);
   } catch (error) {
@@ -42,8 +41,10 @@ const updatedProductByIdController = async (request, response) => {
     const id = request.params.id;
     const data = request.body;
     const [updatedProductById] = await updatedProductByIdService(id, data);
-    console.log(updatedProductById);
-    return response.status(200).json(updatedProductById);
+    return response.status(200).json({
+      message: "Produto Atualizado com sucesso",
+      product: updatedProductById,
+    });
   } catch (error) {
     return response.status(400).json({ message: error });
   }
@@ -62,7 +63,7 @@ const deletedProductByIdController = async (request, response) => {
 const relatedProductsWithCategoryIdController = async (request, response) => {
   try {
     const categoryId = request.params.id;
-    const [relatedProductsWithCategoryId] =
+    const relatedProductsWithCategoryId =
       await relatedProductsWithCategoryIdService(categoryId);
 
     return response.status(200).json(relatedProductsWithCategoryId);
