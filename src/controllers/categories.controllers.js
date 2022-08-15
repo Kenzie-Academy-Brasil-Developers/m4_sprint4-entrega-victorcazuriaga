@@ -18,7 +18,7 @@ const createCategoriesController = async (request, response) => {
 const listCategoriesController = async (request, response) => {
   try {
     const listCategories = await listCategoriesService();
-    console.log(listCategories);
+    console.log([listCategories]);
     return response.status(200).json(listCategories);
   } catch (error) {
     return response.status(400).json({ message: error.message });
@@ -42,12 +42,10 @@ const updatedNameCategoryIdController = async (request, response) => {
       id,
       data
     );
-    return response
-      .status(200)
-      .json({
-        message: "Categoria atualizada com sucesso",
-        category: updatedNameCategoryId,
-      });
+    return response.status(200).json({
+      message: "Categoria atualizada com sucesso",
+      category: updatedNameCategoryId,
+    });
   } catch (error) {
     return response.status(400).json({ message: error.message });
   }

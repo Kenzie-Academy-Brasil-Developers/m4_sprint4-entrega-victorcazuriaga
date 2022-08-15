@@ -1,5 +1,6 @@
 import app from "../src/app";
 import request from "supertest";
+import database from "../src/database";
 
 let testCategory = {
   name: `Categoria Teste ${Math.floor(Math.random() * 10001)}`,
@@ -11,6 +12,11 @@ let testProduct = {
     Math.floor(Math.random() * 90) + 10
   }`,
 };
+afterAll(
+  async () =>
+    await database.query(`DELETE FROM categories;
+  DELETE FROM products`)
+);
 
 describe("Testes rota /categories", () => {
   it("Testando criacao de categoria", async () => {
@@ -51,8 +57,7 @@ describe("Testes rota /categories", () => {
     expect(response.body.message).toBeDefined();
     expect(response.body.category.name).toContain("Atualizada");
   });
-})
-
+});
 
 describe("Testes rota /products", () => {
   it("Testando criacao de produto", async () => {
@@ -117,7 +122,6 @@ describe("Testes rota /products", () => {
     expect(response.status).toBe(204);
   });
 });
-
 
 describe("Testando casos de erro nas rotas /categories e /products", () => {
   afterAll(async () => {

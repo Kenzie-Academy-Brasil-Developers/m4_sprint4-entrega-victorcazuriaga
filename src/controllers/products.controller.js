@@ -10,12 +10,10 @@ const createProductController = async (request, response) => {
   try {
     const data = request.body;
     const [createProduct] = await createProductService(data);
-    return response
-      .status(201)
-      .json({
-        message: "Produto cadastrado com sucesso ",
-        product: createProduct,
-      });
+    return response.status(201).json({
+      message: "Produto cadastrado com sucesso ",
+      product: createProduct,
+    });
   } catch (error) {
     return response.status(400).json({ message: error.message });
   }
