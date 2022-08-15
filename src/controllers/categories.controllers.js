@@ -7,9 +7,10 @@ const createCategoriesController = async (request, response) => {
   try {
     const data = request.body;
     const createCategories = await createCategoriesService(data);
-    return response
-      .status(201)
-      .json({ message: "Categoria cadastrado com sucesso" });
+    return response.status(201).json({
+      message: "Categoria cadastrado com sucesso",
+      category: createCategories,
+    });
   } catch (error) {
     return response.status(400).json({ message: error.message });
   }
@@ -41,8 +42,12 @@ const updatedNameCategoryIdController = async (request, response) => {
       id,
       data
     );
-    console.log(updatedNameCategoryId);
-    return response.status(200).json(updatedNameCategoryId);
+    return response
+      .status(200)
+      .json({
+        message: "Categoria atualizada com sucesso",
+        category: updatedNameCategoryId,
+      });
   } catch (error) {
     return response.status(400).json({ message: error.message });
   }
