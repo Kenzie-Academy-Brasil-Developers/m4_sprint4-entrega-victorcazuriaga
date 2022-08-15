@@ -9,7 +9,6 @@ const categoryExistMiddleware = async (request, response, next) => {
           `,
     [id]
   );
-
   if (!verifyCategoryExistDb.rows[0]) {
     return response.status(400).json({ message: "Categoria não existe" });
   }
