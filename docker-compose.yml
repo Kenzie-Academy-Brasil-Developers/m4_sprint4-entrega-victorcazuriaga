@@ -46,6 +46,8 @@ services:
         interval: 10s
         timeout: 5s
         retries: 5
+      volumes:
+        - ./create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
 volumes:
   db_production:
     driver: local
