@@ -14,8 +14,8 @@ import {
   retrivedCategoryIdController,
   updatedNameCategoryIdController,
 } from "../controllers/categories.controllers";
-import categoriesSchema from "../database/schemas /categories.schema";
-import productSchema from "../database/schemas /product.schema";
+import categoriesSchema from "../database/schemas/categories.schema";
+import productSchema from "../database/schemas/product.schema";
 import categoryExistMiddleware from "../middlewares/categoryExist.middleware";
 import productExistMiddleware from "../middlewares/productExist.middleware";
 import schemaValidation from "../middlewares/schemaValidated.middleware";
