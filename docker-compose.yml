@@ -8,6 +8,16 @@ services:
       build: .
       ports:
         - 3332:3333
+      environment:
+        - DB_USER=postgres
+        - DB_PASSWORD=postgres
+        - DB_HOST=db_production
+        - DB=products_management
+        - DB_PORT=5432
+        - DB_PORT_TEST=5432
+        - DB_HOST_TEST=dbtest
+        - DB_TEST=test_products
+
       depends_on: 
         db:
           condition: service_healthy

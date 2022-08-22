@@ -4,12 +4,15 @@ import useRoutes from "./routes/routes";
 import { startDatabase } from "./database";
 
 const app = express();
+const PORT = process.env.NODE_ENV === "test" ? 3333 : 3334;
 
 app.use(express.json());
 
 app.use("/", useRoutes);
 
-export default app.listen(3333, () => {
+app.listen(PORT, () => {
   startDatabase();
-  console.log("Server running");
+  console.log(`Server Running ${PORT}`);
 });
+
+export default app;
